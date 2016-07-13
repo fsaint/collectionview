@@ -12,6 +12,8 @@
 		B57800561D36D0C9000505AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57800541D36D0C9000505AC /* Main.storyboard */; };
 		B57800581D36D0C9000505AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57800571D36D0C9000505AC /* Assets.xcassets */; };
 		B578005B1D36D0C9000505AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57800591D36D0C9000505AC /* LaunchScreen.storyboard */; };
+		B57800631D36D142000505AC /* FSJGalleryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57800621D36D142000505AC /* FSJGalleryController.swift */; };
+		B57800651D36D22E000505AC /* FSJPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57800641D36D22E000505AC /* FSJPreviewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		B57800571D36D0C9000505AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B578005A1D36D0C9000505AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B578005C1D36D0C9000505AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B57800621D36D142000505AC /* FSJGalleryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSJGalleryController.swift; sourceTree = "<group>"; };
+		B57800641D36D22E000505AC /* FSJPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSJPreviewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +42,8 @@
 		B57800441D36D0C9000505AC = {
 			isa = PBXGroup;
 			children = (
+				B57800641D36D22E000505AC /* FSJPreviewCell.swift */,
+				B57800621D36D142000505AC /* FSJGalleryController.swift */,
 				B578004F1D36D0C9000505AC /* ImageGallery */,
 				B578004E1D36D0C9000505AC /* Products */,
 			);
@@ -135,6 +141,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B57800651D36D22E000505AC /* FSJPreviewCell.swift in Sources */,
+				B57800631D36D142000505AC /* FSJGalleryController.swift in Sources */,
 				B57800531D36D0C9000505AC /* ViewController.swift in Sources */,
 				B57800511D36D0C9000505AC /* AppDelegate.swift in Sources */,
 			);
