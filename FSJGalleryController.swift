@@ -12,7 +12,10 @@ class FSJGalleryController: UICollectionViewController {
 
     
     override func viewDidLoad() {
-        self.automaticallyAdjustsScrollViewInsets = true
+        super.viewDidLoad()
+        self.edgesForExtendedLayout = UIRectEdge.None
+        self.automaticallyAdjustsScrollViewInsets = false
+        self.extendedLayoutIncludesOpaqueBars = false
     }
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
