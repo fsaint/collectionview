@@ -6,32 +6,110 @@
 //  Copyright © 2016 Felipe Saint-jean. All rights reserved.
 //
 import UIKit
+import Photos
 
 
 class FSJGalleryController: UICollectionViewController {
-
+    
+    let all_assets =  PHAsset.fetchAssetsWithOptions(nil)
+    
+    var selected_assets: [PHAsset] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.None
         self.automaticallyAdjustsScrollViewInsets = false
         self.extendedLayoutIncludesOpaqueBars = false
+        
+        PHPhotoLibrary.requestAuthorization({ (status: PHAuthorizationStatus) in
+            self.collectionView?.reloadData()
+        })
+        
+   
     }
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return all_assets.count
+    }
+    
+    
+    @IBAction func selectImages(sender: AnyObject) {
+    }
+    
+    @IBAction func cancelSelection(sender: AnyObject) {
     }
     
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("GalleryCell", forIndexPath: indexPath) as! FSJPreviewCell
         
+        let manager = PHImageManager.defaultManager()
+        
+        if cell.tag != 0 {
+            manager.cancelImageRequest(PHImageRequestID(cell.tag))
+        }
+        
+        let initialRequestOptions = PHImageRequestOptions()
+        initialRequestOptions.synchronous = true
+        initialRequestOptions.resizeMode = .Fast
+        initialRequestOptions.deliveryMode = .FastFormat
+        
+        if let asset = all_assets.objectAtIndex(all_assets.count - indexPath.row - 1) as? PHAsset {
+            let request_id = manager.requestImageForAsset(asset,
+                                         targetSize: CGSize(width: 86.0, height: 86.0),
+                                         contentMode: .AspectFit,
+                                         options: initialRequestOptions) { (initialResult, _) in
+                
+                                            cell.preview.image = initialResult
+            }
+            
+            cell.tag = Int(request_id)
+
+            
+            if self.selected_assets.contains(asset) {
+                cell.selectionIndex.alpha = 1.0
+                let index = self.selected_assets.indexOf(asset)!
+                cell.selectionIndex.text = "\(index + 1)"
+                
+            }else{
+                cell.selectionIndex.alpha = 0.0
+            }
+
+            
+        }else{
+            cell.tag = 0
+        }
+        
+        
+        
         //cell.configureCell(self.results[indexPath.row])
         return cell
     }
 
+    
+    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if let asset = all_assets.objectAtIndex(all_assets.count - indexPath.row - 1) as? PHAsset {
+            if self.selected_assets.contains(asset) {
+                /* had a value. Need to deselect */
+                let index = self.selected_assets.indexOf(asset)!
+                self.selected_assets.removeAtIndex(index)
+                self.collectionView?.reloadData()
+            }else{
+                /* no value, make the last */
+                self.selected_assets.append(asset)
+                 self.collectionView?.reloadItemsAtIndexPaths([indexPath])
+            }
+            
+           
+            
+            //asset.3
+            
+        }
+        
+        
+    }
 
 }

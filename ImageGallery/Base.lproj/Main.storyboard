@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E33e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AHg-7V-Lzn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E33e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="ui0-4D-P8j">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Gallery Controller-->
@@ -26,9 +27,30 @@
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g3Y-3E-Cbd">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kT-u1-PTG">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="g3Y-3E-Cbd" firstAttribute="leading" secondItem="Udn-gd-Hhc" secondAttribute="leadingMargin" constant="-8" id="JCa-ab-LXU"/>
+                                    <constraint firstItem="g3Y-3E-Cbd" firstAttribute="top" secondItem="Udn-gd-Hhc" secondAttribute="topMargin" constant="-8" id="QsW-3j-SFJ"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="g3Y-3E-Cbd" secondAttribute="trailing" constant="-8" id="TfI-d8-9nF"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="g3Y-3E-Cbd" secondAttribute="bottom" constant="-8" id="tLg-dv-qWn"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="preview" destination="g3Y-3E-Cbd" id="1gC-aq-JC3"/>
+                                    <outlet property="selectionIndex" destination="1kT-u1-PTG" id="Be0-ke-Ykb"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -36,10 +58,38 @@
                             <outlet property="delegate" destination="AHg-7V-Lzn" id="4cg-cO-3Yd"/>
                         </connections>
                     </collectionView>
+                    <navigationItem key="navigationItem" id="SdN-sw-JU5">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="7je-CF-7XW">
+                            <connections>
+                                <action selector="cancelSelection:" destination="AHg-7V-Lzn" id="jd6-Xb-DbN"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Select" id="ndy-fW-lLq">
+                            <connections>
+                                <action selector="selectImages:" destination="AHg-7V-Lzn" id="k1Y-tu-Yro"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XkL-ox-7mD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="548" y="889"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="1ca-13-4LA">
+            <objects>
+                <navigationController id="ui0-4D-P8j" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hmU-3K-W1w">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="AHg-7V-Lzn" kind="relationship" relationship="rootViewController" id="ygj-kd-neO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ola-da-wUZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-272" y="889"/>
         </scene>
     </scenes>
 </document>
