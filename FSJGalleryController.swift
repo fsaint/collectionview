@@ -14,6 +14,12 @@ class FSJGalleryController: UICollectionViewController {
     let all_assets =  PHAsset.fetchAssetsWithOptions(nil)
     
     var selected_assets: [PHAsset] = []
+
+    var onReady: (([PHAsset])-> Void)? = nil
+    
+    var onCancel: ((UIViewController)->Void)? = nil
+    
+    @IBOutlet weak var select_button: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +31,7 @@ class FSJGalleryController: UICollectionViewController {
             self.collectionView?.reloadData()
         })
         
-   
+        
     }
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
@@ -37,9 +43,36 @@ class FSJGalleryController: UICollectionViewController {
     
     
     @IBAction func selectImages(sender: AnyObject) {
+        if let onReady = onReady {
+            onReady(self.selected_assets)
+        }
+        
+    }
+    
+    override func viewWillLayoutSubviews() {
+        let w = Int(self.view.bounds.width)
+        
+        for i in 4...6 {
+            if w % i == 0 {
+                if let flowLayout = self.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+                    flowLayout.itemSize = CGSize(width: w/i, height: w/i)
+                }
+
+                return
+            }
+        }
+        
+        /* Default to 4 rows if could not find match */
+        if let flowLayout = self.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.itemSize = CGSize(width: w/4, height: w/4)
+        }
+        
     }
     
     @IBAction func cancelSelection(sender: AnyObject) {
+        if let onCancel = onCancel {
+            onCancel(self)
+        }
     }
     
     
@@ -103,12 +136,15 @@ class FSJGalleryController: UICollectionViewController {
                  self.collectionView?.reloadItemsAtIndexPaths([indexPath])
             }
             
-           
-            
-            //asset.3
-            
+        
         }
         
+        
+        if self.selected_assets.count >= 1 {
+            self.select_button.enabled = true
+        }else{
+            self.select_button.enabled = false
+        }
         
     }
 

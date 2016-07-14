@@ -13,16 +13,16 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="rmm-a7-4xS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lZf-rG-Pdd">
+                        <color key="backgroundColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="lZf-rG-Pdd">
                             <size key="itemSize" width="80" height="80"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GalleryCell" id="Udn-gd-Hhc" customClass="FSJPreviewCell" customModule="ImageGallery" customModuleProvider="target">
-                                <rect key="frame" x="5" y="5" width="80" height="80"/>
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -31,9 +31,9 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g3Y-3E-Cbd">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kT-u1-PTG">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1kT-u1-PTG">
                                             <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -42,10 +42,14 @@
                                 </view>
                                 <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="1kT-u1-PTG" firstAttribute="top" secondItem="Udn-gd-Hhc" secondAttribute="topMargin" constant="-8" id="CrJ-Kb-nuO"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="1kT-u1-PTG" secondAttribute="bottom" constant="-8" id="CvX-j6-IiS"/>
                                     <constraint firstItem="g3Y-3E-Cbd" firstAttribute="leading" secondItem="Udn-gd-Hhc" secondAttribute="leadingMargin" constant="-8" id="JCa-ab-LXU"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="1kT-u1-PTG" secondAttribute="trailing" constant="-8" id="LBw-aL-Dty"/>
                                     <constraint firstItem="g3Y-3E-Cbd" firstAttribute="top" secondItem="Udn-gd-Hhc" secondAttribute="topMargin" constant="-8" id="QsW-3j-SFJ"/>
                                     <constraint firstAttribute="trailingMargin" secondItem="g3Y-3E-Cbd" secondAttribute="trailing" constant="-8" id="TfI-d8-9nF"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="g3Y-3E-Cbd" secondAttribute="bottom" constant="-8" id="tLg-dv-qWn"/>
+                                    <constraint firstItem="1kT-u1-PTG" firstAttribute="leading" secondItem="Udn-gd-Hhc" secondAttribute="leadingMargin" constant="-8" id="y5v-Zz-voS"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="preview" destination="g3Y-3E-Cbd" id="1gC-aq-JC3"/>
@@ -70,6 +74,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="select_button" destination="ndy-fW-lLq" id="gx6-9w-O8Y"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XkL-ox-7mD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
