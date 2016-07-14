@@ -36,11 +36,12 @@ class FSJGalleryController: UICollectionViewController, PHPhotoLibraryChangeObse
         
         
         
-        
-        PHPhotoLibrary.requestAuthorization({ (status: PHAuthorizationStatus) in
-            //self.reloadAssets()
-            
-        })
+        if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.NotDetermined {
+            PHPhotoLibrary.requestAuthorization({ (status: PHAuthorizationStatus) in
+                self.reloadAssets()
+                
+            })
+        }
         
         PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
         
