@@ -33,8 +33,12 @@ class FSJGalleryController: UICollectionViewController, PHPhotoLibraryChangeObse
         self.automaticallyAdjustsScrollViewInsets = false
         self.extendedLayoutIncludesOpaqueBars = false
         
+        
+        
+        
+        
         PHPhotoLibrary.requestAuthorization({ (status: PHAuthorizationStatus) in
-            self.reloadAssets()
+            //self.reloadAssets()
             
         })
         
@@ -122,7 +126,7 @@ class FSJGalleryController: UICollectionViewController, PHPhotoLibraryChangeObse
             let request_id = manager.requestImageForAsset(asset,
                                          targetSize: CGSize(width: 86.0, height: 86.0),
                                          contentMode: .AspectFit,
-                                         options: initialRequestOptions) { (initialResult, _) in
+                                         options: initialRequestOptions) { (initialResult, _ ) in
                 
                                             cell.preview.image = initialResult
             }
@@ -142,6 +146,7 @@ class FSJGalleryController: UICollectionViewController, PHPhotoLibraryChangeObse
             
         }else{
             cell.tag = 0
+            print("not an asset")
         }
         
         
@@ -182,11 +187,11 @@ class FSJGalleryController: UICollectionViewController, PHPhotoLibraryChangeObse
         guard let nav = UIStoryboard(name: "FSJGallery", bundle: nil).instantiateInitialViewController() as? UINavigationController else {return}
         guard let gallery = nav.viewControllers[0] as? FSJGalleryController  else {return}
         
-        gallery.onCancel = { _ in
+        gallery.onCancel = { [unowned nav] _ in
             nav.dismissViewControllerAnimated(true, completion: nil)
         }
         
-        gallery.onReady = { assets  in
+        gallery.onReady = { [unowned nav] assets  in
             nav.dismissViewControllerAnimated(true, completion: nil)
         }
         
