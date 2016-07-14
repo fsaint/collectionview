@@ -41,7 +41,7 @@ class FSJGalleryController: UICollectionViewController, PHPhotoLibraryChangeObse
         PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
         
         self.select_button.enabled = false
-        
+        self.resetItemSizes()
     }
     
     func photoLibraryDidChange(changeInstance: PHChange) {
@@ -68,7 +68,8 @@ class FSJGalleryController: UICollectionViewController, PHPhotoLibraryChangeObse
         
     }
     
-    override func viewWillLayoutSubviews() {
+    func resetItemSizes(){
+    
         let w = Int(self.view.bounds.width)
         
         for i in 4...6 {
@@ -76,7 +77,7 @@ class FSJGalleryController: UICollectionViewController, PHPhotoLibraryChangeObse
                 if let flowLayout = self.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
                     flowLayout.itemSize = CGSize(width: w/i, height: w/i)
                 }
-
+                
                 return
             }
         }
@@ -88,6 +89,14 @@ class FSJGalleryController: UICollectionViewController, PHPhotoLibraryChangeObse
         
     }
     
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        
+        coordinator.animateAlongsideTransition(nil) { _ in
+            self.resetItemSizes()
+        }
+        
+    }
     @IBAction func cancelSelection(sender: AnyObject) {
         if let onCancel = onCancel {
             onCancel(self)
