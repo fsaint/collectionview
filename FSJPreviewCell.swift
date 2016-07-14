@@ -12,4 +12,4 @@ class FSJPreviewCell: UICollectionViewCell {
 
     @IBOutlet weak var selectionIndex: UILabel!
     @IBOutlet weak var preview: UIImageView!
-}
+ }

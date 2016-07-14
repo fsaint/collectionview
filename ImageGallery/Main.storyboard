@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E33e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="amI-KQ-66M">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Jw7-Qf-akm">
+            <objects>
+                <viewController id="amI-KQ-66M" customClass="ViewController" customModule="ImageGallery" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pjN-wo-PT5"/>
+                        <viewControllerLayoutGuide type="bottom" id="BpT-QE-Dnh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hco-TI-BRl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdc-gD-Fkf">
+                                <rect key="frame" x="232" y="256" width="137" height="87"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="137" id="rZp-mO-tKQ"/>
+                                    <constraint firstAttribute="height" constant="87" id="tTU-Ej-UfE"/>
+                                </constraints>
+                                <state key="normal" title="Present Selector"/>
+                                <connections>
+                                    <action selector="presentImageSelector:" destination="amI-KQ-66M" eventType="touchUpInside" id="m03-0r-Cjy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="qdc-gD-Fkf" firstAttribute="centerX" secondItem="Hco-TI-BRl" secondAttribute="centerX" id="P72-mv-Unz"/>
+                            <constraint firstItem="qdc-gD-Fkf" firstAttribute="centerY" secondItem="Hco-TI-BRl" secondAttribute="centerY" id="uJn-dH-WgP"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a3y-PA-tdV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="404" y="526"/>
+        </scene>
+    </scenes>
+</document>

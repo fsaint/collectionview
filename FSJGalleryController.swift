@@ -9,9 +9,9 @@ import UIKit
 import Photos
 
 
-class FSJGalleryController: UICollectionViewController {
+class FSJGalleryController: UICollectionViewController, PHPhotoLibraryChangeObserver {
     
-    let all_assets =  PHAsset.fetchAssetsWithOptions(nil)
+    var all_assets: PHFetchResult = PHAsset.fetchAssetsWithOptions(nil)
     
     var selected_assets: [PHAsset] = []
 
@@ -21,6 +21,12 @@ class FSJGalleryController: UICollectionViewController {
     
     @IBOutlet weak var select_button: UIBarButtonItem!
     
+    
+    func reloadAssets(){
+        self.all_assets =  PHAsset.fetchAssetsWithOptions(nil)
+        self.collectionView?.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.None
@@ -28,11 +34,24 @@ class FSJGalleryController: UICollectionViewController {
         self.extendedLayoutIncludesOpaqueBars = false
         
         PHPhotoLibrary.requestAuthorization({ (status: PHAuthorizationStatus) in
-            self.collectionView?.reloadData()
+            self.reloadAssets()
+            
         })
         
+        PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
+        
+        self.select_button.enabled = false
         
     }
+    
+    func photoLibraryDidChange(changeInstance: PHChange) {
+        self.reloadAssets()
+    }
+    
+    deinit {
+        PHPhotoLibrary.sharedPhotoLibrary().unregisterChangeObserver(self)
+    }
+    
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -148,4 +167,23 @@ class FSJGalleryController: UICollectionViewController {
         
     }
 
+    
+    class func presentFrom(viewController: UIViewController){
+        
+        guard let nav = UIStoryboard(name: "FSJGallery", bundle: nil).instantiateInitialViewController() as? UINavigationController else {return}
+        guard let gallery = nav.viewControllers[0] as? FSJGalleryController  else {return}
+        
+        gallery.onCancel = { _ in
+            nav.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        gallery.onReady = { assets  in
+            nav.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        viewController.presentViewController(nav, animated: true) {
+            
+        }
+    }
+    
 }

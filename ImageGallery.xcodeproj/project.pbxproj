@@ -8,24 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		B57800511D36D0C9000505AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57800501D36D0C9000505AC /* AppDelegate.swift */; };
-		B57800531D36D0C9000505AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57800521D36D0C9000505AC /* ViewController.swift */; };
-		B57800561D36D0C9000505AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57800541D36D0C9000505AC /* Main.storyboard */; };
+		B57800561D36D0C9000505AC /* FSJGallery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57800541D36D0C9000505AC /* FSJGallery.storyboard */; };
 		B57800581D36D0C9000505AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B57800571D36D0C9000505AC /* Assets.xcassets */; };
 		B578005B1D36D0C9000505AC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57800591D36D0C9000505AC /* LaunchScreen.storyboard */; };
 		B57800631D36D142000505AC /* FSJGalleryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57800621D36D142000505AC /* FSJGalleryController.swift */; };
 		B57800651D36D22E000505AC /* FSJPreviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57800641D36D22E000505AC /* FSJPreviewCell.swift */; };
+		B57800671D37D743000505AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B57800661D37D743000505AC /* ViewController.swift */; };
+		B57800691D37D758000505AC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B57800681D37D758000505AC /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		B578004D1D36D0C9000505AC /* ImageGallery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageGallery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B57800501D36D0C9000505AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B57800521D36D0C9000505AC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B57800551D36D0C9000505AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B57800551D36D0C9000505AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FSJGallery.storyboard; sourceTree = "<group>"; };
 		B57800571D36D0C9000505AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B578005A1D36D0C9000505AC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B578005C1D36D0C9000505AC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B57800621D36D142000505AC /* FSJGalleryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSJGalleryController.swift; sourceTree = "<group>"; };
 		B57800641D36D22E000505AC /* FSJPreviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSJPreviewCell.swift; sourceTree = "<group>"; };
+		B57800661D37D743000505AC /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B57800681D37D758000505AC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 			children = (
 				B57800641D36D22E000505AC /* FSJPreviewCell.swift */,
 				B57800621D36D142000505AC /* FSJGalleryController.swift */,
+				B57800541D36D0C9000505AC /* FSJGallery.storyboard */,
 				B578004F1D36D0C9000505AC /* ImageGallery */,
 				B578004E1D36D0C9000505AC /* Products */,
 			);
@@ -60,12 +63,12 @@
 		B578004F1D36D0C9000505AC /* ImageGallery */ = {
 			isa = PBXGroup;
 			children = (
+				B57800661D37D743000505AC /* ViewController.swift */,
 				B57800501D36D0C9000505AC /* AppDelegate.swift */,
-				B57800521D36D0C9000505AC /* ViewController.swift */,
-				B57800541D36D0C9000505AC /* Main.storyboard */,
 				B57800571D36D0C9000505AC /* Assets.xcassets */,
 				B57800591D36D0C9000505AC /* LaunchScreen.storyboard */,
 				B578005C1D36D0C9000505AC /* Info.plist */,
+				B57800681D37D758000505AC /* Main.storyboard */,
 			);
 			path = ImageGallery;
 			sourceTree = "<group>";
@@ -130,7 +133,8 @@
 			files = (
 				B578005B1D36D0C9000505AC /* LaunchScreen.storyboard in Resources */,
 				B57800581D36D0C9000505AC /* Assets.xcassets in Resources */,
-				B57800561D36D0C9000505AC /* Main.storyboard in Resources */,
+				B57800561D36D0C9000505AC /* FSJGallery.storyboard in Resources */,
+				B57800691D37D758000505AC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,7 +147,7 @@
 			files = (
 				B57800651D36D22E000505AC /* FSJPreviewCell.swift in Sources */,
 				B57800631D36D142000505AC /* FSJGalleryController.swift in Sources */,
-				B57800531D36D0C9000505AC /* ViewController.swift in Sources */,
+				B57800671D37D743000505AC /* ViewController.swift in Sources */,
 				B57800511D36D0C9000505AC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,12 +155,13 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B57800541D36D0C9000505AC /* Main.storyboard */ = {
+		B57800541D36D0C9000505AC /* FSJGallery.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B57800551D36D0C9000505AC /* Base */,
 			);
-			name = Main.storyboard;
+			name = FSJGallery.storyboard;
+			path = ImageGallery;
 			sourceTree = "<group>";
 		};
 		B57800591D36D0C9000505AC /* LaunchScreen.storyboard */ = {
