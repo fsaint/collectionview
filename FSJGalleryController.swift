@@ -42,7 +42,15 @@ class FSJGalleryController: UICollectionViewController, PHPhotoLibraryChangeObse
             label.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
             label.textColor = UIColor.whiteColor()
             label.numberOfLines = 0
-            label.text = "⚠️ Can't access your photos. Try giving me parmission in Settings"
+            if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.Denied {
+                label.text = "⚠️ Can't access your photos. Try giving me parmission in Settings."
+            }
+            
+            
+            if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.Restricted {
+                label.text = "⚠️ Can't access your photos. Contact your team support to provide permission your photos."
+            }
+            
             self.view.addSubview(label)
             self.warningLabel = label
             
