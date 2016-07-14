@@ -19,12 +19,36 @@ class FSJGalleryController: UICollectionViewController, PHPhotoLibraryChangeObse
     
     var onCancel: ((UIViewController)->Void)? = nil
     
+    var warningLabel: UILabel? = nil
+    
     @IBOutlet weak var select_button: UIBarButtonItem!
     
     
     func reloadAssets(){
         self.all_assets =  PHAsset.fetchAssetsWithOptions(nil)
         self.collectionView?.reloadData()
+    }
+    
+    func updateWarning (){
+        
+        if warningLabel != nil {
+            warningLabel!.removeFromSuperview()
+        }
+        
+        
+        if PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.Denied || PHPhotoLibrary.authorizationStatus() == PHAuthorizationStatus.Restricted {
+            let label = UILabel(frame: self.view.bounds)
+            label.textAlignment = NSTextAlignment.Center
+            label.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+            label.textColor = UIColor.whiteColor()
+            label.numberOfLines = 0
+            label.text = "⚠️ Can't access your photos. Try giving me parmission in Settings"
+            self.view.addSubview(label)
+            self.warningLabel = label
+            
+        }
+        
+        
     }
     
     override func viewDidLoad() {
@@ -42,6 +66,8 @@ class FSJGalleryController: UICollectionViewController, PHPhotoLibraryChangeObse
                 
             })
         }
+        
+        self.updateWarning()
         
         PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
         
