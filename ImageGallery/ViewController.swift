@@ -33,6 +33,8 @@ class ViewController: UIViewController {
     */
 
     @IBAction func presentImageSelector(sender: AnyObject) {
-        FSJGalleryController.presentFrom(self)
+        FSJGalleryController.presentFrom(self) { (assets) in
+            print("Got assets")
+        }
     }
 }

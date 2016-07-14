@@ -217,7 +217,7 @@ class FSJGalleryController: UICollectionViewController, PHPhotoLibraryChangeObse
     }
 
     
-    class func presentFrom(viewController: UIViewController){
+    class func presentFrom(viewController: UIViewController, ready: (assets:[PHAsset]) -> ()){
         
         guard let nav = UIStoryboard(name: "FSJGallery", bundle: nil).instantiateInitialViewController() as? UINavigationController else {return}
         guard let gallery = nav.viewControllers[0] as? FSJGalleryController  else {return}
@@ -228,6 +228,7 @@ class FSJGalleryController: UICollectionViewController, PHPhotoLibraryChangeObse
         
         gallery.onReady = { [unowned nav] assets  in
             nav.dismissViewControllerAnimated(true, completion: nil)
+            ready(assets: assets)
         }
         
         viewController.presentViewController(nav, animated: true) {
